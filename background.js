@@ -1,6 +1,6 @@
 // let w = window.innerWidth
 // let h = window.innerHeight
-let playerBalloon = new player()
+// let playerBalloon = new player()
 
 class gameBackGround {
   constructor(){
@@ -34,7 +34,7 @@ class gameBackGround {
     this.drawBackGroundClouds2()
     this.drawBackGroundClouds3()
     this.drawBackGroundClouds4()
-    playerBalloon.drawBird()
+    // playerBalloon.drawBird()
     this.drawFrontClouds()
     
     this.moveCloudDay()
@@ -46,7 +46,7 @@ class gameBackGround {
     this.drawBackGroundClouds2()
     this.drawBackGroundClouds3()
     this.drawBackGroundClouds4()
-    playerBalloon.drawBird()
+    // playerBalloon.drawBird()
     this.drawNightClouds()
     this.moveCloudDay()
     // this.moveStars()
@@ -103,13 +103,8 @@ class gameBackGround {
   
   }
   drawNightClouds = ()=>{
-    this.ctx.drawImage(this.imgNightClouds, this.imgCloudsDayX-500, this.imgCloudsDayY, w, h);
-    this.ctx.drawImage(this.imgNightClouds, this.imgCloudsDayX-500, this.imgCloudsDayY+this.h, w, h);
+    this.ctx.drawImage(this.imgNightClouds, this.imgCloudsDayX, this.imgCloudsDayY, w, h);
+    this.ctx.drawImage(this.imgNightClouds, this.imgCloudsDayX, this.imgCloudsDayY+this.h, w, h);
   }
-  // moveStars = ()=> {
-  //   this.imgCloudsDayY += this.dayCloudDx;
-
-  //   if (this.imgCloudsDayY > this.h) this.imgCloudsDayY = -500;
-  // }
-
+  
 }

@@ -1,7 +1,7 @@
 // let w = window.innerWidth
 // let h = window.innerHeight
 
-class player {
+class Player {
   constructor(){
     this.canvas=""
     this.ctx =""

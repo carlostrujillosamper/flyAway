@@ -1,13 +1,23 @@
 let w = window.innerWidth
 let h = window.innerHeight
 
-class PowerUps {
-  constructor() {
-    this.canvas=""
-    this.ctx =""
+class PowerUp {
+  constructor(game) {
+    this.canvas= game.canvas
+    this.ctx = game.ctx
   
-    this.xBalloon = w/2
-    this.yBalloon = h-250
+    this.xBalloon = w-(Math.random()*1600)
+    this.yBalloon = h-800 
+    this.imgBird2 = new Image()
+    this.imgBird2.src = "images/output-onlinepngtools01.png"
+    this.imgBird3 = new Image()
+    this.imgBird3.src = "images/output-onlinepngtools02.png"
+    this.imgBird3 = new Image()
+    this.imgBird3.src = "images/output-onlinepngtools03.png"
+    this.imgBird4 = new Image()
+    this.imgBird4.src = "images/output-onlinepngtools04.png"
+    this.allBirds = [this.imgBird2,this.imgBird,this.imgBird3,this.imgBird4]
+    this.randomBird = this.allBirds[Math.floor(Math.random()*4)]
    
     this.w = w
     this.h = h
@@ -26,31 +36,27 @@ class PowerUps {
     this.currentFrame = 0 
     this.frameCounter=0
     this.birdOrigin = this.w-(this.frameCounter*8)
-    this.powerUpSpeed = 4
+    this.powerUpSpeed = 5 
   }
 
-  drawPowerUps() {
-      /** @type HTMLCanvasElement */
-      this.canvas = document.querySelector("#gameCanvas");
-      /** @type CanvasRenderingContext2D */
-      this.ctx= this.canvas.getContext("2d");
-     this.updateFramesPowerUps();
-     
-     this.movePowerUps();
+  drawPowerUp() {
+
+     this.updateFramesPowerUp();
+     this.movePowerUp();
      this.ctx.drawImage(
-       this.imgBird,
-       this.imgBirdSrcX,
-       this.imgBirdSrcY,
-       this.imgBirdWidth,
-       this.imgBirdHeight,
-       this.xBalloon ,
-      this.yBalloon ,
-       100,
-       200
+      this.randomBird,
+      this.imgBirdSrcX,
+      this.imgBirdSrcY,
+      this.imgBirdWidth,
+      this.imgBirdHeight,
+      this.xBalloon ,  
+     this.yBalloon ,
+      100,
+      200
      )
   }
-  updateFramesPowerUps = () =>{
-    if (this.frameCounter%2===0){
+  updateFramesPowerUp = () =>{
+    if (this.frameCounter%800===0){
       this.currentFrame= ++this.currentFrame%5
       this.imgBirdSrcX=this.currentFrame*this.imgBirdWidth
       this.imgBirdSrcY=0
@@ -58,7 +64,7 @@ class PowerUps {
     }
   }
 
-  movePowerUps() {
-    this.imgBirdSrcY -= this.powerUpSpeed;
+  movePowerUp() {
+    this.yBalloon += this.powerUpSpeed;
   }
 }
