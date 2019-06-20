@@ -17,7 +17,8 @@ class PowerUp {
     this.imgBird4 = new Image()
     this.imgBird4.src = "images/output-onlinepngtools04.png"
     this.allBirds = [this.imgBird2,this.imgBird,this.imgBird3,this.imgBird4]
-    this.randomBird = this.allBirds[Math.floor(Math.random()*4)]
+    // this.randomBird = this.allBirds[Math.floor(Math.random()*4)]
+    this.randomBird = this.allBirds[this.randomInt(0,4)]
    
     this.w = w
     this.h = h
@@ -67,4 +68,7 @@ class PowerUp {
   movePowerUp() {
     this.yBalloon += this.powerUpSpeed;
   }
+  randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
 }

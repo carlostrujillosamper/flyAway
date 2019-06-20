@@ -2,7 +2,7 @@
 // let h = window.innerHeight
 
 class Player {
-  constructor(){
+  constructor(playerImg){
     this.canvas=""
     this.ctx =""
   
@@ -10,17 +10,17 @@ class Player {
     this.yBalloon = h-250
    
     this.w = w
-    this.h = h
-    this.imgBird = new Image()
-    this.imgBird.src = "images/output-onlinepngtools.png"
+    this.h = h 
+    this.imgBird = playerImg
+    // this.imgBird.src = playerImg
     this.imgBirdFrames = 14;
     this.imgBirdFrameIndex = 0;
     this.birdX = w
     this.birdY = 0
     this.imgBirdSheetWidth= 543;
-    this.imgBirdSheetHeight=211;
+    this.imgBirdSheetHeight=633;
     this.imgBirdWidth = this.imgBirdSheetWidth/14
-    this.imgBirdHeight = this.imgBirdSheetHeight/2
+    this.imgBirdHeight = this.imgBirdSheetHeight/6
     this.imgBirdSrcX;
     this.imgBirdSrcY;
     this.currentFrame = 0 
@@ -28,7 +28,7 @@ class Player {
     this.birdOrigin = this.w-(this.frameCounter*8)
     this.key_right = 39;
     this.key_left = 37;
-   
+   this.balloonqty = 0;
 
   }
   drawBird = () =>{
@@ -39,10 +39,11 @@ class Player {
     this.updateFrames();
     this.listener()
     this.moveBird();
+    
     this.ctx.drawImage(
       this.imgBird,
       this.imgBirdSrcX,
-      this.imgBirdSrcY,
+      this.imgBirdSrcY + (this.balloonqty*this.imgBirdHeight),
       this.imgBirdWidth,
       this.imgBirdHeight,
       this.xBalloon ,

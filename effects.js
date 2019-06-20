@@ -1,5 +1,5 @@
 class Effect {
-  constructor(){
+  constructor(posicionX,posicionY){
     this.w = w
     this.h = h
     this.canvas=""
@@ -17,36 +17,42 @@ class Effect {
     this.imgEffectSrcX;
     this.imgEffectSrcY;
     this.currentFrame = 0 
+    this.currentRow = 0
     this.frameCounter=0
     this.effectOrigin = this.w-(this.frameCounter*8)
+    this.round = 0
+    this.posX = posicionX + 50
+    this.posY = posicionY 
     
   }
   drawEffect() {
+
     this.canvas = document.querySelector("#gameCanvas");
-     
-     this.ctx= this.canvas.getContext("2d");
-
-    // this.updateFramesEffect();
     
-    // this.ctx.drawImage(
-    //  this.imgEffect,
-    //  this.imgEffectSrcX,
-    //  this.imgEffectSrcY,
-    //  this.imgEffectWidth,
-    //  this.imgEffectHeight,
-    //  this.xBalloon ,  
-    // this.yBalloon ,
-    //  100,
-    //  200
-    // )
-    this.ctx.drawImage(this.imgEffect, 500  , 500, this.imgEffectWidth, this.imgEffectHeight);
- }
-//  updateFramesEffect = () =>{
-//   if (this.frameCounter%2===0){
-//     this.currentFrame= ++this.currentFrame%5
-//     this.imgEffectSrcX=this.currentFrame*this.imgEffectWidth
-//     this.imgEffectSrcY=0
-
-//   }
-// }
+    this.ctx= this.canvas.getContext("2d");
+       var erase = this.ctx.drawImage(
+        this.imgEffect, 
+        this.imgEffectWidth * this.currentFrame, 
+        this.imgEffectHeight * this.currentRow, 
+        this.imgEffectWidth, 
+        this.imgEffectHeight,
+        this.posX, 
+        this.posY, 
+        this.imgEffectWidth, 
+        this.imgEffectHeight);
+      
+        this.currentFrame++
+      
+      if (this.currentFrame > 5) {
+      
+        erase = ""
+       
+        
+      }
+     
+  }
 }
+    
+
+  
+  
