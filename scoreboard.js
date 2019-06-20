@@ -17,7 +17,7 @@ class scoreBoard {
     // this.ctx.font-weight = bolder
     this.ctx.fillStyle = "yellow";
     // this.ctx.strokeStyle = 'rgba(220,21,40,1)'
-      this.ctx.fillText(`${this.score}mts`  , 50, 150);
+      this.ctx.fillText(`${this.score}mts`  , 50, 300);
   }
   getScore = () => {
     return this.score

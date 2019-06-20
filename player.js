@@ -12,7 +12,7 @@ class Player {
     this.w = w
     this.h = h 
     this.imgBird = playerImg
-    // this.imgBird.src = playerImg
+    
     this.imgBirdFrames = 14;
     this.imgBirdFrameIndex = 0;
     this.birdX = w

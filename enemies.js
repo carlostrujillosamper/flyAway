@@ -37,7 +37,8 @@ class Enemy {
     this.currentFrame = 0 
     this.frameCounter=0
     this.birdOrigin = this.w-(this.frameCounter*8)
-    this.EnemySpeed = 5 
+    this.EnemySpeed = 10
+
   }
 
   drawEnemy() {
@@ -71,4 +72,5 @@ class Enemy {
   moveEnemy() {
     this.yBirds += this.EnemySpeed;
   }
+  
 }

@@ -46,7 +46,7 @@ class game {
       if (this.frameCounter % 300 === 0) {
         this.generatePowerUps();
       }
-      if (this.frameCounter % 200 === 0) {
+      if (this.frameCounter % 60 === 0) {
         this.generateEnemies();
       }
       this.checkForPowerUps()
@@ -61,16 +61,16 @@ class game {
         this.score.increaseScore()
       }
 
-     
-
-      // if (this.frameCounter< 400) {
-      //   background.draw()
-      //   this.title.drawTitles()
+      // if (this.frameCounter %  60 === 0){
+      //   background.drawRain()
       // }
+
+      
       
        if (this.frameCounter < 1500){
         
         background.draw()
+        
         this.playerBalloon.drawBird()
         
         
@@ -92,7 +92,9 @@ class game {
             powerUp.drawPowerUp();
           });
      
-      
+      if (this.frameCounter > 3000){
+        this.frameCounter = 0
+      }
       
       this.effects.forEach(effect =>  {
         effect.drawEffect();
@@ -149,12 +151,9 @@ class game {
           delete this.powerUps[index]
 
           this.effects.push(new Effect(powerUp.xBalloon,powerUp.yBalloon))
-          // this.balloons.push(new Player(this.imgBird2))
           
-         this.playerBalloon.balloonqty += 1
-        //  if (this.playerBalloon.balloonqty==5){
-        //   checkPU = ""
-        //  }
+          this.playerBalloon.balloonqty += 1
+         
 
         }
     })
@@ -163,18 +162,16 @@ class game {
     this.enemies.forEach ((enemy, index)=>{
      if (this.playerBalloon.xBalloon + 40 >= enemy.xBirds &&
        enemy.xBirds + 40 >= this.playerBalloon.xBalloon &&
-       this.playerBalloon.yBalloon + 80 >= enemy.yBirds &&
-       enemy.yBirds + 80 >= this.playerBalloon.yBalloon) {
+       this.playerBalloon.yBalloon + 20>= enemy.yBirds &&
+       enemy.yBirds + 20>= this.playerBalloon.yBalloon) {
          
          delete this.enemies[index]
 
          this.effects.push(new Effect(enemy.xBalloon,enemy.yBalloon))
-         // this.balloons.push(new Player(this.imgBird2))
+         
          
         this.playerBalloon.balloonqty -= 1
-       //  if (this.playerBalloon.balloonqty==5){
-       //   checkPU = ""
-       //  }
+      
        if (this.playerBalloon.balloonqty<0){
          this.stop()
        }
@@ -182,15 +179,14 @@ class game {
        }
    })
  }
-  // checkForGameOver = () => {
-  //   if (this.playerBalloon.balloonqty < 0){
-      
-  //     this.gameOver.drawScoreBoard()
-  //   }
-  // }
+  
   stop = () => {
+    alert("like Icarus ,you flew too close to the sun");
+    document.location.reload()
     clearInterval(this.intervalId);
-    this.gameOver.drawScoreBoard()
+    
+    
+    
   }
 
 

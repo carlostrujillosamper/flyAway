@@ -24,7 +24,8 @@ class gameBackGround {
     this.imgBackCloudsY = 0
     this.dayCloudDx = 10
     this.backCloudDx = 0.2
-    
+    this.imgRain = new Image()
+    this.imgRain.src = "images/space-forground.png"
 
   }
   draw = () => {
@@ -105,6 +106,11 @@ class gameBackGround {
   drawNightClouds = ()=>{
     this.ctx.drawImage(this.imgNightClouds, this.imgCloudsDayX, this.imgCloudsDayY, w, h);
     this.ctx.drawImage(this.imgNightClouds, this.imgCloudsDayX, this.imgCloudsDayY+this.h, w, h);
+  }
+
+  drawRain = ()=> {
+    this.ctx.drawImage(this.imgRain, this.imgCloudsDayX, this.imgCloudsDayY, w, h);
+    this.ctx.drawImage(this.imgRain, this.imgCloudsDayX, this.imgCloudsDayY+h, w, h);
   }
   
 }

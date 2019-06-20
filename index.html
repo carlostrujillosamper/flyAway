@@ -4,6 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+   <title>Fly Away</title>
+   <iframe id="music" src="images/four-tet-lush.mp3" allow="autoplay" style="display:none" id="iframeAudio">
+   </iframe>
+   <audio id="music-2" autoplay loop id="playAudio">
+       <source src="../music/zybex.mp3">
+   </audio>
+   <script id="music-3">
+       var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+       if(!isChrome){
+           $('#iframeAudio').remove()
+       }
+       else{
+           $('#playAudio').remove() //just to make sure that it will not have 2x audio in the background
+       }
+   </script>
   <script type="text/javascript" src="powerUps.js"></script>
   <script type="text/javascript" src="effects.js"></script>
   <script type="text/javascript" src="scoreboard.js"></script>
