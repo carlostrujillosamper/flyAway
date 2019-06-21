@@ -22,13 +22,17 @@ class game {
     this.imgBird2 = new Image()
     this.imgBird2.src = "images/output-onlinepngtools02.png"
     this.playerBalloon = new Player(this.imgBird)
-    // this.playerBalloon2 = new Player(this.imgBird2)
+    
     this.balloons = []
     this.effects = []
     this.title = new Title()
     this.score = new scoreBoard()
     this.enemies = []
-    this.gameOver = new GameOverTitle()
+   
+    this.soundBird =new Audio("images/cartoon-birds-2_daniel-simion.wav")
+    this.soundBird.volume = 0.1
+    this.soundSwoosh = new Audio("images/Swoosh 3-SoundBible.com-1573211927.wav")
+    this.soundPop = new Audio("images/Balloon Popping-SoundBible.com-1247261379.wav")
   }
 
   initGame= ()=>{
@@ -52,9 +56,11 @@ class game {
       if (this.score.score< 100){
         if (this.frameCounter % 200 === 0) {
           this.generateEnemies();
+          
         }
       }
       if (this.score.score> 100 && this.score.score<400){
+        
         if (this.frameCounter % 150 === 0) {
           this.generateEnemies();
         }
@@ -65,7 +71,7 @@ class game {
         }
       }
       if (this.score.score> 800 ){
-        if (this.frameCounter % 60 === 0) {
+        if (this.frameCounter % 40 === 0) {
           this.generateEnemies();
         }
       }
@@ -82,11 +88,9 @@ class game {
         this.score.increaseScore()
       }
 
-      // if (this.frameCounter %  60 === 0){
-      //   background.drawRain()
-      // }
+    
 
-      console.log(this.score.score)
+      
       
        if (this.frameCounter < 1500){
         
@@ -98,6 +102,8 @@ class game {
         
        
         this.score.drawScoreBoard()
+        
+        
         
         
         
@@ -119,12 +125,14 @@ class game {
       
       this.effects.forEach(effect =>  {
         effect.drawEffect();
+        
       });
       this.balloons.forEach(balloon =>  {
         balloon.drawBird();
       });
       this.enemies.forEach(enemy =>  {
         enemy.drawEnemy();
+        
         
       });
       
@@ -145,6 +153,7 @@ class game {
   generateEnemies = () => {
     
     this.enemies.push(new Enemy(this))
+    this.soundBird.play();
       
     
   }
@@ -165,30 +174,31 @@ class game {
 
   checkForPowerUps = () => {
      this.powerUps.forEach ((powerUp, index)=>{
-      if (this.playerBalloon.xBalloon + 40 >= powerUp.xBalloon &&
-        powerUp.xBalloon + 40 >= this.playerBalloon.xBalloon &&
+      if (this.playerBalloon.xBalloon + 80 >= powerUp.xBalloon &&
+        powerUp.xBalloon + 80 >= this.playerBalloon.xBalloon &&
         this.playerBalloon.yBalloon + 80 >= powerUp.yBalloon &&
         powerUp.yBalloon + 80 >= this.playerBalloon.yBalloon) {
           
           delete this.powerUps[index]
+          this.soundSwoosh.play()
 
           this.effects.push(new Effect(powerUp.xBalloon,powerUp.yBalloon))
           
           this.playerBalloon.balloonqty += 1
-         
+          
 
         }
     })
   }
   checkForEnemies = () => {
     this.enemies.forEach ((enemy, index)=>{
-     if (this.playerBalloon.xBalloon + 40 >= enemy.xBirds &&
-       enemy.xBirds + 40 >= this.playerBalloon.xBalloon &&
-       this.playerBalloon.yBalloon + 20>= enemy.yBirds &&
-       enemy.yBirds + 20>= this.playerBalloon.yBalloon) {
+     if (this.playerBalloon.xBalloon + 80 >= enemy.xBirds &&
+       enemy.xBirds + 80 >= this.playerBalloon.xBalloon &&
+       this.playerBalloon.yBalloon + 80>= enemy.yBirds &&
+       enemy.yBirds + 80>= this.playerBalloon.yBalloon) {
          
          delete this.enemies[index]
-
+        this.soundPop.play()
          this.effects.push(new Effect(enemy.xBalloon,enemy.yBalloon))
          
          
@@ -203,12 +213,7 @@ class game {
  }
  chasePlayer =()=>{
   this.enemies.forEach ((enemy)=>{
-    // if (enemy.yBirds < this.playerBalloon.yBalloon) {
-    //   enemy.yBirds += enemy.EnemySpeed
-    // }
-    // if (enemy.yBirds > this.playerBalloon.yBalloon){
-    //   enemy.yBirds -= enemy.EnemySpeed
-    // }
+ 
     enemy.yBirds += enemy.EnemySpeed;
     if (enemy.xBirds < this.playerBalloon.xBalloon) {
       enemy.xBirds += enemy.EnemySpeed

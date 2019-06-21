@@ -12,13 +12,13 @@ class PowerUp {
     this.imgBird2.src = "images/output-onlinepngtools01.png"
     this.imgBird3 = new Image()
     this.imgBird3.src = "images/output-onlinepngtools02.png"
-    this.imgBird3 = new Image()
-    this.imgBird3.src = "images/output-onlinepngtools03.png"
+    // this.imgBird3 = new Image()
+    // this.imgBird3.src = "images/output-onlinepngtools03.png"
     this.imgBird4 = new Image()
     this.imgBird4.src = "images/output-onlinepngtools04.png"
     this.allBirds = [this.imgBird2,this.imgBird,this.imgBird3,this.imgBird4]
-    // this.randomBird = this.allBirds[Math.floor(Math.random()*4)]
-    this.randomBird = this.allBirds[this.randomInt(0,3)]
+    this.randomBird = new Image()
+    // this.randomBird = this.allBirds[this.randomInt(0,3)]
    
     this.w = w
     this.h = h
@@ -38,14 +38,30 @@ class PowerUp {
     this.frameCounter=0
     this.birdOrigin = this.w-(this.frameCounter*8)
     this.powerUpSpeed = 5 
+    var globoTipo = this.randomInt(0,3)
+    switch (globoTipo){
+      case 0: 
+      this.randomBird = this.imgBird
+      break;
+      case 1: 
+      this.randomBird = this.imgBird2
+      break;
+      case 2: 
+      this.randomBird = this.imgBird3
+      break;
+      case 3: 
+      this.randomBird = this.imgBird4
+      break;
+    }
   }
+
 
   drawPowerUp() {
 
      this.updateFramesPowerUp();
      this.movePowerUp();
      this.ctx.drawImage(
-      this.imgBird,
+      this.randomBird,
       this.imgBirdSrcX,
       this.imgBirdSrcY,
       this.imgBirdWidth,

@@ -26,7 +26,7 @@ class gameBackGround {
     this.backCloudDx = 0.2
     this.imgRain = new Image()
     this.imgRain.src = "images/space-forground.png"
-
+    this.soundWind = new Audio("images/wind01.mp3")
   }
   draw = () => {
     
@@ -65,6 +65,7 @@ class gameBackGround {
   drawFrontClouds = ()=>{
     this.ctx.drawImage(this.imgCloudsDay, this.imgCloudsDayX, this.imgCloudsDayY, w, h);
     this.ctx.drawImage(this.imgCloudsDay, this.imgCloudsDayX, this.imgCloudsDayY+this.h, w, h);
+    this.soundWind.play()
   }
   drawBackGroundClouds = ()=>{
     this.ctx.drawImage(this.imgCloudsBack, this.imgBackCloudsX, this.imgBackCloudsY, 100, 50);
@@ -101,6 +102,7 @@ class gameBackGround {
      this.ctx= this.canvas.getContext("2d");
    
     this.ctx.drawImage(this.imgNight, 0, 0, w, h);
+
   
   }
   drawNightClouds = ()=>{
