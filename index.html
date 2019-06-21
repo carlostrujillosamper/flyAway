@@ -6,10 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
    <title>Fly Away</title>
-   <iframe id="music" src="images/four-tet-lush.mp3" allow="autoplay" style="display:none" id="iframeAudio">
+   <iframe id="music" src="images/wind01.mp3" allow="autoplay" style="display:none" id="iframeAudio">
    </iframe>
    <audio id="music-2" autoplay loop id="playAudio">
-       <source src="../music/zybex.mp3">
+       <source src="images/seq9.2.wav">
    </audio>
    <script id="music-3">
        var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
@@ -23,8 +23,8 @@
   <script type="text/javascript" src="powerUps.js"></script>
   <script type="text/javascript" src="effects.js"></script>
   <script type="text/javascript" src="scoreboard.js"></script>
-  <script type="text/javascript" src="enemies.js"></script>
   <script type="text/javascript" src="player.js"></script>
+  <script type="text/javascript" src="enemies.js"></script>
   <script type="text/javascript" src="titles.js"></script>
   <script type="text/javascript" src="background.js"></script>
   <script type="text/javascript" src="gameRun.js"></script>
@@ -34,7 +34,14 @@
   <title>Document</title>
 </head>
 <body>
-    <button id="start-button">StartGame</button>
+  <div class = "intro">
+    <h1>Fly Away</h1>
+    <h2>A game about never looking back</h2>
+    <h3></h3>
+  <button id="start-button"></button>
+
+  
+</div>
     <canvas id = "gameCanvas" ></canvas>
   
 </body>

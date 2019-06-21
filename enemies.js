@@ -37,7 +37,8 @@ class Enemy {
     this.currentFrame = 0 
     this.frameCounter=0
     this.birdOrigin = this.w-(this.frameCounter*8)
-    this.EnemySpeed = 10
+    this.EnemySpeed = 3
+
 
   }
 
@@ -61,16 +62,32 @@ class Enemy {
     //  this.ctx.restore()
   }
   updateFramesEnemy = () =>{
-    if (this.frameCounter%800===0){
+    if (this.frameCounter%14===0){
       this.currentFrame= ++this.currentFrame%5
       this.imgBirdSrcX=this.currentFrame*this.imgBirdWidth
       this.imgBirdSrcY=0
 
     }
+   
   }
 
   moveEnemy() {
-    this.yBirds += this.EnemySpeed;
+    // this.yBirds += this.EnemySpeed;
+    // if (this.yBirds < playerBalloon.yBalloon) {
+    //   this.yBirds += this.EnemySpeed
+    // }
+    // if (this.yBirds > playerBalloon.yBalloon){
+    //   this.yBirds -= this.EnemySpeed
+    // }
+    // if (this.xBirds < playerBalloon.xBalloon) {
+    //   this.xBirds += this.EnemySpeed
+    // }
+    // if (this.xBirds > playerBalloon.xBalloon) {
+    //   this.xBirds -= this.EnemySpeed
+    // }
+    // console.log(playerBalloon)
+    
   }
+
   
 }

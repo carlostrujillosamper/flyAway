@@ -18,7 +18,7 @@ class PowerUp {
     this.imgBird4.src = "images/output-onlinepngtools04.png"
     this.allBirds = [this.imgBird2,this.imgBird,this.imgBird3,this.imgBird4]
     // this.randomBird = this.allBirds[Math.floor(Math.random()*4)]
-    this.randomBird = this.allBirds[this.randomInt(0,4)]
+    this.randomBird = this.allBirds[this.randomInt(0,3)]
    
     this.w = w
     this.h = h
@@ -45,7 +45,7 @@ class PowerUp {
      this.updateFramesPowerUp();
      this.movePowerUp();
      this.ctx.drawImage(
-      this.randomBird,
+      this.imgBird,
       this.imgBirdSrcX,
       this.imgBirdSrcY,
       this.imgBirdWidth,

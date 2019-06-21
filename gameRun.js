@@ -22,7 +22,7 @@ class game {
     this.imgBird2 = new Image()
     this.imgBird2.src = "images/output-onlinepngtools02.png"
     this.playerBalloon = new Player(this.imgBird)
-    this.playerBalloon2 = new Player(this.imgBird2)
+    // this.playerBalloon2 = new Player(this.imgBird2)
     this.balloons = []
     this.effects = []
     this.title = new Title()
@@ -46,12 +46,33 @@ class game {
       if (this.frameCounter % 300 === 0) {
         this.generatePowerUps();
       }
-      if (this.frameCounter % 60 === 0) {
-        this.generateEnemies();
+      // if (this.frameCounter % 200 === 0) {
+      //   this.generateEnemies();
+      // }
+      if (this.score.score< 100){
+        if (this.frameCounter % 200 === 0) {
+          this.generateEnemies();
+        }
       }
+      if (this.score.score> 100 && this.score.score<400){
+        if (this.frameCounter % 150 === 0) {
+          this.generateEnemies();
+        }
+      }
+      if (this.score.score> 400 && this.score.score<800){
+        if (this.frameCounter % 100 === 0) {
+          this.generateEnemies();
+        }
+      }
+      if (this.score.score> 800 ){
+        if (this.frameCounter % 60 === 0) {
+          this.generateEnemies();
+        }
+      }
+      
       this.checkForPowerUps()
       this.checkForEnemies()
-      
+      this.chasePlayer()
       
       
       this.clearPowerUps()
@@ -65,7 +86,7 @@ class game {
       //   background.drawRain()
       // }
 
-      
+      console.log(this.score.score)
       
        if (this.frameCounter < 1500){
         
@@ -104,6 +125,7 @@ class game {
       });
       this.enemies.forEach(enemy =>  {
         enemy.drawEnemy();
+        
       });
       
       
@@ -178,6 +200,25 @@ class game {
 
        }
    })
+ }
+ chasePlayer =()=>{
+  this.enemies.forEach ((enemy)=>{
+    // if (enemy.yBirds < this.playerBalloon.yBalloon) {
+    //   enemy.yBirds += enemy.EnemySpeed
+    // }
+    // if (enemy.yBirds > this.playerBalloon.yBalloon){
+    //   enemy.yBirds -= enemy.EnemySpeed
+    // }
+    enemy.yBirds += enemy.EnemySpeed;
+    if (enemy.xBirds < this.playerBalloon.xBalloon) {
+      enemy.xBirds += enemy.EnemySpeed
+    }
+    if (enemy.xBirds > this.playerBalloon.xBalloon) {
+      enemy.xBirds -= enemy.EnemySpeed
+    }
+  })
+
+ 
  }
   
   stop = () => {

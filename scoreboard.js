@@ -41,8 +41,10 @@ class GameOverTitle {
     // this.ctx.font-weight = bolder
     this.ctx.fillStyle = "yellow";
     // this.ctx.strokeStyle = 'rgba(220,21,40,1)'
-      this.ctx.fillText(`GAME OVER`, 500,500);
+      this.ctx.fillText(`FLy Away `, 500,500);
+
   }
+
 
   
   

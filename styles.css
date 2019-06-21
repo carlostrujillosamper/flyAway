@@ -5,28 +5,40 @@ EDIT ON
 }
 body{
   text-align:center;
+  background-image: url("images/Sky1.png");
+  
+  
+  
+  
 }
-body:before{
+/* body:before{
   content:'';
   height:100%;
   display:inline-block;
   vertical-align:middle;
-}
+} */
 button{
   background-color: blue;
+  background-image: url("images/start.png");
+  
+  
   color:#fff;
   border:none;
   position:relative;
-  height:400px;
+  height:220px;
+  width: 660px;
   font-size:1.6em;
   padding:0 2em;
   cursor:pointer;
   transition:800ms ease all;
   outline:none;
+  margin-top: 40px;
 }
 button:hover{
-  background:#fff;
+  background:yellow;
   color:#1AAB8A;
+  background-image: url("images/start.png");
+
 }
 button:before,button:after{
   content:'';
@@ -48,3 +60,27 @@ button:hover:before,button:hover:after{
   width:100%;
   transition:800ms ease all;
 }
+h1 {
+  font-family: myFirstFont;
+  font-size: 200px;
+  margin-top: 100px;
+  color: yellow;
+}
+h2 {
+  font-family: myFirstFont;
+  font-size: 50px;
+  
+  color: yellow;
+}
+@font-face {
+  font-family: myFirstFont;
+  src: url(images/slkscre.ttf);
+}
+h3 {
+  font-family: myFirstFont;
+  font-size: 10px;
+  
+  color: red;
+
+}
+
